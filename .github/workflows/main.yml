@@ -22,7 +22,7 @@ jobs:
         run: npm install # O el comando que uses para instalar dependencias
 
       - name: Delete dist
-        run: rmdir /s /q dist # O el comando que uses para instalar dependencias 
+        run: rmdir ./dist # O el comando que uses para instalar dependencias 
 
       - name: Build
         run: npm run build # O el comando que uses para construir tu app
