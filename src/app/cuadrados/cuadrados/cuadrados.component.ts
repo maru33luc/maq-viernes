@@ -14,7 +14,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   <div class="elementos elem4"><p>Cuadrado 4</p></div>
   <div class="elementos elem5"><p>Cuadrado 5</p></div>
   <div class="elementos elem6"><p>Cuadrado 6</p></div>
-
+<p>Holaaa</p>
 
 </section>
 
