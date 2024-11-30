@@ -1,0 +1,48 @@
+:host {
+  /* display: block; */
+
+}
+
+section{
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+justify-content: center;
+/* grid-template-rows: 200px 200px 200px; */
+/* grid-auto-flow: column dense; */
+margin-bottom: 100px;
+}
+
+
+
+.elementos{
+  width: 150px;
+  height: 150px;
+
+  p{
+    font-weight: bold;
+  }
+}
+
+.elem1{
+  background-color: aqua;
+}
+
+.elem2{
+  background-color: blue;
+}
+
+.elem3{
+  background-color: green;
+}
+
+.elem4{
+  background-color: yellow;
+}
+
+.elem5{
+  background-color: red;
+}
+
+.elem6{
+  background-color: orange;
+}
