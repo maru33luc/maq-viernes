@@ -30,11 +30,6 @@ jobs:
           source: ./
           destination: ./_site
 
-      - name: Copy Dist Files
-        run: |
-          mkdir -p ./_site
-          cp -r ./dist/browser/* ./_site/ # Copia el contenido de dist/browser a _site
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
