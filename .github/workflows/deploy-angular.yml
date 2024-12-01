@@ -36,7 +36,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist/maquet-app'
+          path: './dist/maquet-app/browser'
           # Reemplaza [nombre-de-tu-proyecto] con el nombre real de tu proyecto Angular
 
   deploy:
