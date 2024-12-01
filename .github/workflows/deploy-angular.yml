@@ -1,0 +1,33 @@
+name: Deploy Angular App to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16' # Cambia a la versión de Node.js que necesites
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the application
+        run: npm run build -- --base-href /maq-viernes/
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.0
+        with:
+          branch: gh-pages # La rama donde se desplegará
+          folder: dist/maquet-app # La carpeta que contiene los archivos generados
+          token: ${{ secrets.GITHUB_TOKEN }} # Token de acceso para GitHub
