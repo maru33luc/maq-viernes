@@ -1,23 +1,30 @@
-name: Deploy Angular App to GitHub Pages
+name: Deploy Jekyll with GitHub Pages dependencies preinstalled
 
 on:
   push:
-    branches:
-      - main
+    branches: ["main"]
   workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
+      - name: Checkout
+        uses: actions/checkout@v4
+        
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16' # Cambia a la versión de Node.js que necesites
+          node-version: '18' # Cambia a la versión de Node.js que necesites (mínimo 18.19)
 
       - name: Install dependencies
         run: npm install
@@ -25,9 +32,23 @@ jobs:
       - name: Build the application
         run: npm run build -- --base-href /maq-viernes/
 
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.0
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          branch: gh-pages # La rama donde se desplegará
-          folder: dist/maquet-app # La carpeta que contiene los archivos generados
-          token: ${{ secrets.GITHUB_TOKEN }} # Token de acceso para GitHub
+          path: ./dist/maquet-app # Asegúrate de que esta ruta sea correcta
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
