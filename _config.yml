@@ -6,4 +6,4 @@ baseurl: "" # Cambia esto si tu aplicación está en un subdirectorio
 url: "https://maru33luc.github.io/maq-viernes/" # Cambia esto a la URL de tu repositorio
 
 # Configuraciones adicionales
-theme: minima # O el tema que estés utilizando
+theme: minima # O el tem   a que estés utilizando
