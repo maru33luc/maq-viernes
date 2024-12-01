@@ -28,7 +28,7 @@ jobs:
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
-          source: ./
+          source: ./src
           destination: ./_site # Asegúrate de que esta carpeta sea donde se generen los archivos de tu aplicación
 
       - name: Upload artifact
