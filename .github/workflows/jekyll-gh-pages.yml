@@ -1,4 +1,3 @@
-# Flujo de trabajo para construir y desplegar una aplicación con Jekyll en GitHub Pages
 name: Deploy Jekyll with GitHub Pages dependencies preinstalled
 
 on:
@@ -31,6 +30,11 @@ jobs:
           source: ./
           destination: ./_site
 
+      - name: Copy Dist Files
+        run: |
+          mkdir -p ./_site
+          cp -r ./dist/browser/* ./_site/ # Copia el contenido de dist/browser a _site
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -47,5 +51,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }} # Usa el token de GitHub para la autenticación
-          timeout: 600 # Tiempo de espera en segundos (opcional)
+          token: ${{ secrets.GITHUB_TOKEN }}
