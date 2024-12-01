@@ -2,8 +2,8 @@
 
 title: Mi Aplicación
 description: Una breve descripción de mi aplicación.
-baseurl: "" # Cambia esto si tu aplicación está en un subdirectorio
-url: "https://maru33luc.github.io/<maq-viernes>" # Cambia esto a la URL de tu repositorio
+baseurl: "/maq-viernes" # Cambia esto si tu aplicación está en un subdirectorio
+url: "https://maru33luc.github.io/maq-viernes/" # Cambia esto a la URL de tu repositorio
 
 # Configuraciones adicionales
 theme: minima # O el tema que estés utilizando
