@@ -29,7 +29,7 @@ jobs:
         uses: actions/jekyll-build-pages@v1
         with:
           source: ./
-          destination: ./_site # Cambia esto si deseas usar otra carpeta
+          destination: ./dist # Cambia esto si deseas usar otra carpeta
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -45,7 +45,7 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
         with:
-          publish_dir: ./_site # Asegúrate de que esta carpeta contenga tu sitio generado
+          publish_dir: ./dist # Asegúrate de que esta carpeta contenga tu sitio generado
     needs: build
     steps:
       - name: Deploy to GitHub Pages
