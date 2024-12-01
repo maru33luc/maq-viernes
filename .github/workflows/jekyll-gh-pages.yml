@@ -1,21 +1,27 @@
-# Flujo de trabajo para construir y desplegar una aplicación con Jekyll en GitHub Pages
+ # Flujo de trabajo para construir y desplegar una aplicación con Jekyll en GitHub Pages
 name: Deploy Jekyll with GitHub Pages dependencies preinstalled
 
 on:
+  # Se ejecuta en los pushes al branch principal
   push:
     branches: ["main"]
+
+  # Permite ejecutar este flujo de trabajo manualmente desde la pestaña de Actions
   workflow_dispatch:
 
+# Establece permisos del GITHUB_TOKEN para permitir el despliegue en GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# Permite solo un despliegue concurrente, omitiendo ejecuciones en cola entre la ejecución en progreso y la última en cola.
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
+  # Trabajo de construcción
   build:
     runs-on: ubuntu-latest
     steps:
@@ -28,12 +34,13 @@ jobs:
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
-          source: ./
-          destination: ./dist # Cambia esto si deseas usar otra carpeta
+          source: ./ # Cambia esto si tu fuente está en una carpeta diferente
+          destination: ./dist/browser # Asegúrate de que esta carpeta sea donde se generen los archivos de tu aplicación
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
+  # Trabajo de despliegue
   deploy:
     environment:
       name: github-pages
@@ -43,11 +50,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
-        with:
-          publish_dir: ./dist # Asegúrate de que esta carpeta contenga tu sitio generado
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v4 
