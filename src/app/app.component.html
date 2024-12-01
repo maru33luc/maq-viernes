@@ -1,11 +1,11 @@
-<app-cuadrados></app-cuadrados>
+
 
 
 <header>
   <nav>
     <h3>Actuallll x2</h3>
     <ul>
-      <li><a href="#">Inicio</a></li>
+      <li><a [routerLink]="['about']">About US</a></li>
       <li><a href="#">Nosotros</a></li>
       <li><a href="#">Servicios</a></li>
       <li><a href="#">Contacto</a></li>
@@ -13,7 +13,9 @@
   </nav>
 </header>
 
-<main>
+<router-outlet></router-outlet>
+
+<!-- <main>
   <section class="cards-container">
     <div class="card">
       <div class="card-image">
@@ -102,7 +104,7 @@
 <footer>
   <p>&copy; 2024 - Todos los derechos reservados</p>
 
-</footer>
+</footer> -->
 
 
 
