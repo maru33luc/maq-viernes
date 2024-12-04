@@ -39,7 +39,7 @@ jobs:
           path: './dist/maquet-app/browser/'
           # Reemplaza [nombre-de-tu-proyecto] con el nombre real de tu proyecto Angular
 
-  deploy:
+deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
